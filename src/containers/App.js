@@ -1,9 +1,10 @@
 import React from 'react';
+import Directory from '../components/Directory/Directory';
 
 const App = () => (
   <div>
     <h1>
-      NoteManager
+      <Directory name="test" />
     </h1>
   </div>
 );
