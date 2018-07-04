@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Directory renders properly 1`] = `
+<div>
+  <span
+    className="name"
+  >
+    Test Directory
+  </span>
+</div>
+`;
