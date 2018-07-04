@@ -1,5 +1,5 @@
 {
-  "name": "NoteManager_frontend",
+  "name": "note-manager-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +15,13 @@
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1"
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-react": "^7.10.0"
   },
   "jest": {
     "collectCoverageFrom": [
