@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/EugeneOsadchyi/Note-Manager-Frontend.svg?branch=master)](https://travis-ci.org/EugeneOsadchyi/Note-Manager-Frontend)
+[![CircleCI](https://circleci.com/gh/EugeneOsadchyi/Note-Manager-Frontend.svg?style=svg)](https://circleci.com/gh/EugeneOsadchyi/Note-Manager-Frontend)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
