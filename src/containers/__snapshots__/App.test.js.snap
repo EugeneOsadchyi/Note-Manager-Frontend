@@ -3,9 +3,7 @@
 exports[`App renders properly 1`] = `
 <div>
   <h1>
-    <Directoty
-      name="test"
-    />
+    Note Manager
   </h1>
 </div>
 `;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DirectoryList when component is fulfilled with \`directories\` renders properly 1`] = `
+<ul>
+  <li
+    key="1"
+  >
+    <Directory
+      doubleClicked={[Function]}
+      folderClicked={[Function]}
+      name="Test"
+      opened={false}
+    />
+  </li>
+</ul>
+`;
+
+exports[`DirectoryList when not \`directories\` are passed renders properly 1`] = `<ul />`;

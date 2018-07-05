@@ -1,9 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Directory renders properly 1`] = `
-<div>
+<div
+  className="Directory"
+  onDoubleClick={[Function]}
+>
   <span
     className="icon"
+    onClick={[Function]}
   >
     <FontAwesomeIcon
       border={false}
