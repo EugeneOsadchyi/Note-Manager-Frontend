@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 
-import Directory from './index';
+import Directory from './Directory';
 
 describe('Directory', () => {
   const name = 'Test Directory';
