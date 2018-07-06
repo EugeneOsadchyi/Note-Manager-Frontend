@@ -1,0 +1,2 @@
+export const OPEN_DIRECTORY = 'OPEN_DIRECTORY';
+export const CLOSE_DIRECTORY = 'CLOSE_DIRECTORY';
