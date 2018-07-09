@@ -73,15 +73,15 @@ describe('Directory reducer', () => {
     beforeEach(() => {
       initialState = {
         directories: [{
-          id: 1, name: 'Directory 1', opened: false, active: false,
+          id: 1, name: 'Directory 1', opened: false, active: false, parentId: null,
         }, {
-          id: 2, name: 'Directory 2', opened: false, active: true,
+          id: 2, name: 'Directory 2', opened: false, active: true, parentId: null,
         }, {
-          id: 3, name: 'Directory 1.1', opened: false, active: false,
+          id: 3, name: 'Directory 1.1', opened: false, active: false, parentId: 1,
         }, {
-          id: 4, name: 'Directory 1.2', opened: false, active: false,
+          id: 4, name: 'Directory 1.2', opened: false, active: false, parentId: 1,
         }, {
-          id: 5, name: 'Directory 1.1.1', opened: false, active: false,
+          id: 5, name: 'Directory 1.1.1', opened: false, active: false, parentId: 3,
         }],
       };
 
@@ -91,15 +91,15 @@ describe('Directory reducer', () => {
     it('sets directory `active` property to true and resets other directories `active` property to false', () => {
       const expectedState = {
         directories: [{
-          id: 1, name: 'Directory 1', opened: false, active: true,
+          id: 1, name: 'Directory 1', opened: false, active: true, parentId: null,
         }, {
-          id: 2, name: 'Directory 2', opened: false, active: false,
+          id: 2, name: 'Directory 2', opened: false, active: false, parentId: null,
         }, {
-          id: 3, name: 'Directory 1.1', opened: false, active: false,
+          id: 3, name: 'Directory 1.1', opened: false, active: false, parentId: 1,
         }, {
-          id: 4, name: 'Directory 1.2', opened: false, active: false,
+          id: 4, name: 'Directory 1.2', opened: false, active: false, parentId: 1,
         }, {
-          id: 5, name: 'Directory 1.1.1', opened: false, active: false,
+          id: 5, name: 'Directory 1.1.1', opened: false, active: false, parentId: 3,
         }],
       };
 
@@ -110,15 +110,15 @@ describe('Directory reducer', () => {
     it('sets parent directories\' `opened` property to true', () => {
       const expectedState = {
         directories: [{
-          id: 1, name: 'Directory 1', opened: true, active: false,
+          id: 1, name: 'Directory 1', opened: true, active: false, parentId: null,
         }, {
-          id: 2, name: 'Directory 2', opened: true, active: false,
+          id: 2, name: 'Directory 2', opened: false, active: false, parentId: null,
         }, {
-          id: 3, name: 'Directory 1.1', opened: true, active: false,
+          id: 3, name: 'Directory 1.1', opened: true, active: false, parentId: 1,
         }, {
-          id: 4, name: 'Directory 1.2', opened: false, active: false,
+          id: 4, name: 'Directory 1.2', opened: false, active: false, parentId: 1,
         }, {
-          id: 5, name: 'Directory 1.1.1', opened: false, active: true,
+          id: 5, name: 'Directory 1.1.1', opened: false, active: true, parentId: 3,
         }],
       };
 
