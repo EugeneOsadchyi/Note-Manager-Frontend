@@ -8,13 +8,15 @@ describe('DirectoryList', () => {
   const mockToggleDirectory = jest.fn();
   const mockEditDirectory = jest.fn();
 
-  describe('when not `directories` are passed', () => {
-    const directories = [];
+  const mockedFunctions = {
+    toggleDirectory: mockToggleDirectory,
+    editDirectory: mockEditDirectory,
+  };
 
+  describe('when `directories` are not passed', () => {
     const props = {
-      directories,
-      toggleDirectory: mockToggleDirectory,
-      editDirectory: mockEditDirectory,
+      directories: [],
+      ...mockedFunctions,
     };
 
     const directoryList = shallow(<DirectoryList {...props} />);
@@ -22,20 +24,22 @@ describe('DirectoryList', () => {
     it('renders properly', () => {
       expect(shallowToJson(directoryList)).toMatchSnapshot();
     });
+
+    it('does not contain Directory component', () => {
+      expect(directoryList.find('Directory').exists()).toBe(false);
+    });
   });
 
   describe('when component is fulfilled with `directories`', () => {
-    const directory = {
+    const directories = [{
       id: 1,
-      name: 'Test',
-      opened: false,
-    };
-    const directories = [directory];
+      name: 'Root',
+      opened: true,
+    }];
 
     const props = {
       directories,
-      toggleDirectory: mockToggleDirectory,
-      editDirectory: mockEditDirectory,
+      ...mockedFunctions,
     };
 
     const directoryList = shallow(<DirectoryList {...props} />);
@@ -46,6 +50,12 @@ describe('DirectoryList', () => {
 
     it('contains Directory component', () => {
       expect(directoryList.find('Directory').exists()).toBe(true);
+    });
+
+    describe('when directory is opened', () => {
+      it('contains DirectoryList component', () => {
+        expect(directoryList.find('DirectoryList').exists()).toBe(true);
+      });
     });
   });
 });
