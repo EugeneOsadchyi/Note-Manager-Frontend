@@ -7,14 +7,18 @@ import Directory from './Directory';
 describe('Directory', () => {
   const name = 'Test Directory';
   const opened = false;
-  const mockFolderClicked = jest.fn();
+  const active = false;
+  const mockClicked = jest.fn();
   const mockDoubleClicked = jest.fn();
+  const mockFolderClicked = jest.fn();
 
   const props = {
     name,
     opened,
-    folderClicked: mockFolderClicked,
+    active,
+    clicked: mockClicked,
     doubleClicked: mockDoubleClicked,
+    folderClicked: mockFolderClicked,
   };
   let directory = shallow(<Directory {...props} />);
 
@@ -32,19 +36,27 @@ describe('Directory', () => {
       directory = mount(<Directory {...props} />);
     });
 
-    it('displays `fa-folder-open` icon', () => {
+    it('displays opened folder icon', () => {
       expect(directory.find('.icon .fa-folder-open').exists()).toBe(true);
     });
   });
 
-  describe('when not `opened` is reveived from the props', () => {
+  describe('when not `opened` is received from the props', () => {
     beforeEach(() => {
       props.opened = false;
       directory = mount(<Directory {...props} />);
     });
 
-    it('displays `fa-folder` icon', () => {
+    it('displays closed folder icon', () => {
       expect(directory.find('.icon .fa-folder').exists()).toBe(true);
+    });
+  });
+
+  describe('when directory name was double-clicked', () => {
+    beforeEach(() => directory.find('.name').simulate('doubleclick'));
+
+    it('dispatches the `doubleClicked()` it receives from the props', () => {
+      expect(mockDoubleClicked).toHaveBeenCalled();
     });
   });
 
@@ -56,11 +68,26 @@ describe('Directory', () => {
     });
   });
 
-  describe('when directory name was double-clicked', () => {
-    beforeEach(() => directory.find('.name').simulate('doubleclick'));
+  describe('when directory was clicked', () => {
+    beforeEach(() => directory.simulate('click'));
 
-    it('dispatches the `doubleClicked()` it receives from the props', () => {
-      expect(mockDoubleClicked).toHaveBeenCalled();
+    it('dispatched the `clicked()` it receives from the props', () => {
+      expect(mockClicked).toHaveBeenCalled();
+    });
+  });
+
+  describe('when `active` is received from the props', () => {
+    beforeEach(() => {
+      props.active = true;
+      directory = shallow(<Directory {...props} />);
+    });
+
+    it('renders properly', () => {
+      expect(shallowToJson(directory)).toMatchSnapshot();
+    });
+
+    it('highlights the directory', () => {
+      expect(directory.find('.active').exists()).toBe(true);
     });
   });
 });

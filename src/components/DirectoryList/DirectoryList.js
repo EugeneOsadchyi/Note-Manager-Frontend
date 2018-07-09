@@ -5,6 +5,7 @@ import Directory from './Directory';
 const DirectoryList = ({
   directories,
   parentId,
+  selectDirectory,
   toggleDirectory,
   editDirectory,
 }) => (
@@ -17,13 +18,16 @@ const DirectoryList = ({
               <Directory
                 name={directory.name}
                 opened={directory.opened}
-                folderClicked={toggleDirectory}
+                active={directory.active}
+                clicked={selectDirectory}
                 doubleClicked={editDirectory}
+                folderClicked={toggleDirectory}
               />
               {
                 directory.opened ? (
                   <DirectoryList
                     directories={directories}
+                    selectDirectory={selectDirectory}
                     toggleDirectory={toggleDirectory}
                     editDirectory={editDirectory}
                     parentId={directory.id}
@@ -45,9 +49,11 @@ DirectoryList.propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       opened: PropTypes.bool.isRequired,
+      active: PropTypes.bool.isRequired,
     }),
   ),
   parentId: PropTypes.number,
+  selectDirectory: PropTypes.func.isRequired,
   toggleDirectory: PropTypes.func.isRequired,
   editDirectory: PropTypes.func.isRequired,
 };

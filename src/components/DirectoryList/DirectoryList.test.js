@@ -5,10 +5,12 @@ import { shallowToJson } from 'enzyme-to-json';
 import DirectoryList from './DirectoryList';
 
 describe('DirectoryList', () => {
+  const mockSelectDirectory = jest.fn();
   const mockToggleDirectory = jest.fn();
   const mockEditDirectory = jest.fn();
 
   const mockedFunctions = {
+    selectDirectory: mockSelectDirectory,
     toggleDirectory: mockToggleDirectory,
     editDirectory: mockEditDirectory,
   };
@@ -35,6 +37,7 @@ describe('DirectoryList', () => {
       id: 1,
       name: 'Root',
       opened: true,
+      active: true,
     }];
 
     const props = {

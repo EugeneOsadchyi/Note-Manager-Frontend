@@ -15,4 +15,10 @@ describe('Directory actions', () => {
 
     expect(actions.closeDirectory(id)).toEqual(expectedAction);
   });
+
+  it('creates an action to select the directory', () => {
+    const expectedAction = { type: actionTypes.SELECT_DIRECTORY, id };
+
+    expect(actions.selectDirectory(id)).toEqual(expectedAction);
+  });
 });

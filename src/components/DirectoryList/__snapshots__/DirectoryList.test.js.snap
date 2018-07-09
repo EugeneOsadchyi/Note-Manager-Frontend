@@ -8,6 +8,8 @@ exports[`DirectoryList when component is fulfilled with \`directories\` renders 
     key="1"
   >
     <Directory
+      active={true}
+      clicked={[Function]}
       doubleClicked={[Function]}
       folderClicked={[Function]}
       name="Root"
@@ -17,6 +19,7 @@ exports[`DirectoryList when component is fulfilled with \`directories\` renders 
       directories={
         Array [
           Object {
+            "active": true,
             "id": 1,
             "name": "Root",
             "opened": true,
@@ -25,6 +28,7 @@ exports[`DirectoryList when component is fulfilled with \`directories\` renders 
       }
       editDirectory={[Function]}
       parentId={1}
+      selectDirectory={[Function]}
       toggleDirectory={[Function]}
     />
   </li>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,13 +8,22 @@ import { faFolder, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 const Directory = ({
   name,
   opened,
-  folderClicked,
+  active,
+  clicked,
   doubleClicked,
+  folderClicked,
 }) => {
   const icon = opened ? faFolderOpen : faFolder;
+  const classes = classNames('Directory', {
+    active,
+  });
 
   return (
-    <div className="Directory" onDoubleClick={doubleClicked}>
+    <div
+      className={classes}
+      onClick={clicked}
+      onDoubleClick={doubleClicked}
+    >
       <span className="icon" onClick={folderClicked}>
         <FontAwesomeIcon icon={icon} />
       </span>
@@ -27,6 +37,8 @@ const Directory = ({
 Directory.propTypes = {
   name: PropTypes.string.isRequired,
   opened: PropTypes.bool.isRequired,
+  active: PropTypes.bool.isRequired,
+  clicked: PropTypes.func.isRequired,
   doubleClicked: PropTypes.func.isRequired,
   folderClicked: PropTypes.func.isRequired,
 };
