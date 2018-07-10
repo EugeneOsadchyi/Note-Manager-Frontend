@@ -1,7 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './containers/App';
+import { createStore } from 'redux';
+import { Provider, compose } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 
-render(<App />, document.getElementById('root'));
+import rootReducer from './store/reducers';
+import App from './containers/App';
+
+const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+
+render(
+  <Provider store={createStore(rootReducer, composeEnhancers())}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);
+
 registerServiceWorker();
