@@ -6,30 +6,37 @@ const DirectoryList = ({
   directories,
   parentId,
   selectDirectory,
-  toggleDirectory,
-  editDirectory,
+  openDirectory,
+  closeDirectory,
+  // editDirectory,
 }) => (
   <ul>
     {
       directories.map((directory) => {
         if (directory.parentId === parentId) {
+          const folderClicked = directory.opened
+            ? closeDirectory
+            : openDirectory;
+
           return (
             <li key={directory.id}>
               <Directory
+                id={directory.id}
                 name={directory.name}
                 opened={directory.opened}
                 active={directory.active}
                 clicked={selectDirectory}
-                doubleClicked={editDirectory}
-                folderClicked={toggleDirectory}
+                // doubleClicked={editDirectory}
+                folderClicked={folderClicked}
               />
               {
                 directory.opened ? (
                   <DirectoryList
                     directories={directories}
                     selectDirectory={selectDirectory}
-                    toggleDirectory={toggleDirectory}
-                    editDirectory={editDirectory}
+                    openDirectory={openDirectory}
+                    closeDirectory={closeDirectory}
+                    // editDirectory={editDirectory}
                     parentId={directory.id}
                   />
                 ) : null
@@ -54,8 +61,10 @@ DirectoryList.propTypes = {
   ),
   parentId: PropTypes.number,
   selectDirectory: PropTypes.func.isRequired,
-  toggleDirectory: PropTypes.func.isRequired,
-  editDirectory: PropTypes.func.isRequired,
+  openDirectory: PropTypes.func.isRequired,
+  closeDirectory: PropTypes.func.isRequired,
+  // toggleDirectory: PropTypes.func.isRequired,
+  // editDirectory: PropTypes.func.isRequired,
 };
 
 DirectoryList.defaultProps = {
