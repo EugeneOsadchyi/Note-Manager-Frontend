@@ -1,61 +1,36 @@
 import * as actionTypes from '../actions/actionTypes';
 import updateObject from '../../utils/updateObject';
-import arrayToDictionary from '../../utils/arrayToDictionary';
-import Tree from '../../utils/tree';
+import Ancestry from '../../utils/ancestry';
 
 const initialState = {
   directories: [],
 };
 
-const updateDirectories = (directories, action, updatedProperties) => (
+const updateDirectories = (directories, ids, updatedProperties) => (
   directories.map((directory) => {
-    if (directory.id !== action.id) {
-      return directory;
+    if (ids.includes(directory.id)) {
+      return updateObject(directory, updatedProperties);
     }
-    return updateObject(directory, updatedProperties);
+    return directory;
   })
 );
 
-// <<<<<<<< Investigate for validity
-const openParentDirectory = (directoriesDictionary, parentId) => {
-  const directory = directoriesDictionary[parentId];
-  directory.opened = true;
-
-  if (directory.parentId) {
-    return {
-      ...directoriesDictionary,
-      [directory.parentId]: openParentDirectory(directoriesDictionary, directory.parentId),
-    };
-  }
-
-  return directory;
-};
-
-const openDirectories = (directories, directoryId) => {
-  const directoryIdToDirectory = arrayToDictionary(directories, 'id');
-  const currentDirectory = directoryIdToDirectory[directoryId];
-
-  if (currentDirectory.parentId) {
-    return Object.values(openParentDirectory(directoryIdToDirectory, currentDirectory.parentId));
-  }
-  return directories;
-};
-// >>>>>>>>>>
-
 const openDirectory = (state, action) => {
-  const directories = updateDirectories(state.directories, action, { opened: true });
+  const directories = updateDirectories(state.directories, [action.id], { opened: true });
   return updateObject(state, { directories });
 };
 
 const closeDirectory = (state, action) => {
-  const directories = updateDirectories(state.directories, action, { opened: false });
+  const directories = updateDirectories(state.directories, [action.id], { opened: false });
   return updateObject(state, { directories });
 };
 
 const selectDirectory = (state, action) => {
   let directories = state.directories.map(directory => updateObject(directory, { active: false }));
-  directories = updateDirectories(directories, action, { active: true });
-  directories = openDirectories(directories, action.id);
+  directories = updateDirectories(directories, [action.id], { active: true });
+
+  const openedDirectoryIds = (new Ancestry(directories)).getAncestorIds(action.id);
+  directories = updateDirectories(directories, openedDirectoryIds, { opened: true });
 
   return updateObject(state, { directories });
 };
@@ -69,7 +44,10 @@ const createDirectory = (state, action) => {
 };
 
 const removeDirectory = (state, action) => {
-  const directories = Tree.removeNode(state.directories, action.id);
+  const siblingIds = (new Ancestry(state.directories)).getSiblingIds(action.id);
+  const ids = [action.id, ...siblingIds];
+
+  const directories = state.directories.filter(directory => !ids.includes(directory.id));
 
   return updateObject(state, { directories });
 };
