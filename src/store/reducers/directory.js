@@ -1,6 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 import updateObject from '../../utils/updateObject';
 import arrayToDictionary from '../../utils/arrayToDictionary';
+import groupBy from '../../utils/groupBy';
 
 const initialState = {
   directories: [],
@@ -59,11 +60,27 @@ const selectDirectory = (state, action) => {
   return updateObject(state, { directories });
 };
 
+const createDirectory = (state, action) => {
+  const lastIndex = Math.max(state.directories.map(directory => directory.id));
+  const newDirectory = { id: lastIndex + 1, name: action.name, parentId: action.parentId };
+  const directories = [...state.directories, newDirectory];
+
+  return updateObject(state, { directories });
+};
+
+const removeDirectory = (state, action) => {
+  const directories = state.directories.filter(directory => directory.id !== action.id);
+
+  return updateObject(state, { directories });
+};
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.OPEN_DIRECTORY: return openDirectory(state, action);
     case actionTypes.CLOSE_DIRECTORY: return closeDirectory(state, action);
     case actionTypes.SELECT_DIRECTORY: return selectDirectory(state, action);
+    case actionTypes.CREATE_DIRECTORY: return createDirectory(state, action);
+    case actionTypes.REMOVE_DIRECTORY: return removeDirectory(state, action);
     default: return state;
   }
 };

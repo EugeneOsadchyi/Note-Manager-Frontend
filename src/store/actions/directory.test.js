@@ -21,4 +21,19 @@ describe('Directory actions', () => {
 
     expect(actions.selectDirectory(id)).toEqual(expectedAction);
   });
+
+  it('creates an action to create a directory', () => {
+    const parentId = 1;
+    const name = 'Child Directory';
+
+    const expectedAction = { type: actionTypes.CREATE_DIRECTORY, name, parentId };
+
+    expect(actions.createDirectory(name, parentId)).toEqual(expectedAction);
+  });
+
+  it('creates an action to remove a directory', () => {
+    const expectedAction = { type: actionTypes.REMOVE_DIRECTORY, id };
+
+    expect(actions.removeDirectory(id)).toEqual(expectedAction);
+  });
 });

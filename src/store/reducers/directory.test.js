@@ -4,16 +4,6 @@ import * as actionTypes from '../actions/actionTypes';
 import reducer from './directory';
 
 describe('Directory reducer', () => {
-  let initialState = {
-    directories: [{
-      id: 1, name: 'Closed directory', opened: false, active: false,
-    }, {
-      id: 2, name: 'Opened directory', opened: true, active: true,
-    }],
-  };
-
-  deepFreeze(initialState);
-
   it('returns initial state', () => {
     expect(reducer(undefined, {}))
       .toEqual({
@@ -22,6 +12,20 @@ describe('Directory reducer', () => {
   });
 
   describe('when opens the directory', () => {
+    let initialState;
+
+    beforeEach(() => {
+      initialState = {
+        directories: [{
+          id: 1, name: 'Closed directory', opened: false, active: false,
+        }, {
+          id: 2, name: 'Opened directory', opened: true, active: true,
+        }],
+      };
+
+      deepFreeze(initialState);
+    });
+
     describe('and directoryId is valid', () => {
       it('sets directory `opened` property to true', () => {
         const expectedState = {
@@ -46,6 +50,20 @@ describe('Directory reducer', () => {
   });
 
   describe('when closes the directory', () => {
+    let initialState;
+
+    beforeEach(() => {
+      initialState = {
+        directories: [{
+          id: 1, name: 'Closed directory', opened: false, active: false,
+        }, {
+          id: 2, name: 'Opened directory', opened: true, active: true,
+        }],
+      };
+
+      deepFreeze(initialState);
+    });
+
     describe('and directoryId is valid', () => {
       it('sets directory `opened` property to false', () => {
         const expectedState = {
@@ -70,6 +88,8 @@ describe('Directory reducer', () => {
   });
 
   describe('when selects the directory', () => {
+    let initialState;
+
     beforeEach(() => {
       initialState = {
         directories: [{
@@ -125,5 +145,50 @@ describe('Directory reducer', () => {
       expect(reducer(initialState, { type: actionTypes.SELECT_DIRECTORY, id: 5 }))
         .toEqual(expectedState);
     });
+  });
+
+  it('creates the directory', () => {
+    const name = 'New Directory';
+    const parentId = 1;
+
+    const initialState = {
+      directories: [{ id: 1, name: 'Directory' }],
+    };
+
+    const expectedState = {
+      ...initialState,
+      directories: [
+        ...initialState.directories,
+        { id: 2, name, parentId },
+      ],
+    };
+
+    expect(reducer(initialState, { type: actionTypes.CREATE_DIRECTORY, name, parentId }))
+      .toEqual(expectedState);
+  });
+
+  it('removes the directory', () => {
+    const id = 1;
+
+    const initialState = {
+      directories: [
+        { id: 1, name: 'Directory 1', parentId: null },
+        { id: 2, name: 'Directory 2', parentId: 1 },
+        { id: 3, name: 'Directory 3', parentId: 2 },
+        { id: 4, name: 'Directory 4', parentId: null },
+      ],
+    };
+
+    const expectedState = {
+      ...initialState,
+      directories: [
+        { id: 2, name: 'Directory 2', parentId: 1 },
+        { id: 3, name: 'Directory 3', parentId: 2 },
+        { id: 4, name: 'Directory 4', parentId: null },
+      ],
+    };
+
+    expect(reducer(initialState, { type: actionTypes.REMOVE_DIRECTORY, id }))
+      .toEqual(expectedState);
   });
 });
