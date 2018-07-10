@@ -167,7 +167,7 @@ describe('Directory reducer', () => {
       .toEqual(expectedState);
   });
 
-  it('removes the directory', () => {
+  it('removes the directory with it\'s nested directories', () => {
     const id = 1;
 
     const initialState = {
@@ -182,8 +182,6 @@ describe('Directory reducer', () => {
     const expectedState = {
       ...initialState,
       directories: [
-        { id: 2, name: 'Directory 2', parentId: 1 },
-        { id: 3, name: 'Directory 3', parentId: 2 },
         { id: 4, name: 'Directory 4', parentId: null },
       ],
     };

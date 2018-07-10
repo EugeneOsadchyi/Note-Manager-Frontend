@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 import updateObject from '../../utils/updateObject';
 import arrayToDictionary from '../../utils/arrayToDictionary';
-import groupBy from '../../utils/groupBy';
+import Tree from '../../utils/tree';
 
 const initialState = {
   directories: [],
@@ -69,7 +69,7 @@ const createDirectory = (state, action) => {
 };
 
 const removeDirectory = (state, action) => {
-  const directories = state.directories.filter(directory => directory.id !== action.id);
+  const directories = Tree.removeNode(state.directories, action.id);
 
   return updateObject(state, { directories });
 };
