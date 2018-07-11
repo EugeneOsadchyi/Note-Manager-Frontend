@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
-
+import './Directory.css';
 
 const Directory = ({
   name,
@@ -23,8 +23,9 @@ const Directory = ({
       className={classes}
       onClick={clicked}
       onDoubleClick={doubleClicked}
+      role="presentation"
     >
-      <span className="icon" role="button" onClick={folderClicked}>
+      <span className="icon" role="presentation" onClick={folderClicked}>
         <FontAwesomeIcon icon={icon} />
       </span>
       <span className="name">

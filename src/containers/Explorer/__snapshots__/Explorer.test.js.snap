@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Explorer renders properly 1`] = `
+<div
+  className="Explorer"
+>
+  <DirectoryList
+    closeDirectory={[Function]}
+    directories={
+      Array [
+        Object {
+          "active": true,
+          "id": 1,
+          "name": "Root",
+          "opened": true,
+          "parentId": null,
+        },
+        Object {
+          "active": false,
+          "id": 2,
+          "name": "Child",
+          "opened": false,
+          "parentId": 1,
+        },
+      ]
+    }
+    openDirectory={[Function]}
+    selectDirectory={[Function]}
+  />
+</div>
+`;
