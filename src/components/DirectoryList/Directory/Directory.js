@@ -6,7 +6,6 @@ import { faFolder, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
 
 const Directory = ({
-  id,
   name,
   opened,
   active,
@@ -22,10 +21,10 @@ const Directory = ({
   return (
     <div
       className={classes}
-      onClick={() => clicked(id)}
-      onDoubleClick={() => doubleClicked(id)}
+      onClick={clicked}
+      onDoubleClick={doubleClicked}
     >
-      <span className="icon" onClick={() => folderClicked(id)}>
+      <span className="icon" role="button" onClick={folderClicked}>
         <FontAwesomeIcon icon={icon} />
       </span>
       <span className="name">
@@ -40,7 +39,7 @@ Directory.propTypes = {
   opened: PropTypes.bool.isRequired,
   active: PropTypes.bool.isRequired,
   clicked: PropTypes.func.isRequired,
-  // doubleClicked: PropTypes.func.isRequired,
+  doubleClicked: PropTypes.func.isRequired,
   folderClicked: PropTypes.func.isRequired,
 };
 

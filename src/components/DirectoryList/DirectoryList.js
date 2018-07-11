@@ -14,20 +14,22 @@ const DirectoryList = ({
     {
       directories.map((directory) => {
         if (directory.parentId === parentId) {
-          const folderClicked = directory.opened
+          const {
+            id, name, opened, active,
+          } = directory;
+          const folderClicked = opened
             ? closeDirectory
             : openDirectory;
 
           return (
-            <li key={directory.id}>
+            <li key={id}>
               <Directory
-                id={directory.id}
-                name={directory.name}
-                opened={directory.opened}
-                active={directory.active}
-                clicked={selectDirectory}
+                name={name}
+                opened={opened}
+                active={active}
+                clicked={() => selectDirectory(id)}
                 // doubleClicked={editDirectory}
-                folderClicked={folderClicked}
+                folderClicked={() => folderClicked(id)}
               />
               {
                 directory.opened ? (
