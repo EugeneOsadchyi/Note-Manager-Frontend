@@ -7,22 +7,41 @@ import Backdrop from './Backdrop';
 describe('Backdrop', () => {
   const mockClicked = jest.fn();
 
-  const props = {
-    show: true,
-    clicked: mockClicked,
-  };
+  describe('when Backdrop is visible', () => {
+    const props = {
+      show: true,
+      clicked: mockClicked,
+    };
 
-  const backdrop = shallow(<Backdrop {...props} />);
+    const backdrop = shallow(<Backdrop {...props} />);
 
-  it('renders properly', () => {
-    expect(shallowToJson(backdrop)).toMatchSnapshot();
+    it('renders properly', () => {
+      expect(shallowToJson(backdrop)).toMatchSnapshot();
+    });
+
+    describe('when backdrop clicked', () => {
+      beforeEach(() => backdrop.simulate('click'));
+
+      it('triggers clicked() function', () => {
+        expect(mockClicked).toHaveBeenCalled();
+      });
+    });
   });
 
-  describe('when backdrop clicked', () => {
-    beforeEach(() => backdrop.simulate('click'));
+  describe('when Backdrop is hidden', () => {
+    const props = {
+      show: false,
+      clicked: mockClicked,
+    };
 
-    it('triggers clicked() function', () => {
-      expect(mockClicked).toHaveBeenCalled();
+    const backdrop = shallow(<Backdrop {...props} />);
+
+    it('renders properly', () => {
+      expect(shallowToJson(backdrop)).toMatchSnapshot();
+    });
+
+    it('does not contain Backdrop node', () => {
+      expect(backdrop.find('.Backdrop').exists()).toBe(false);
     });
   });
 });

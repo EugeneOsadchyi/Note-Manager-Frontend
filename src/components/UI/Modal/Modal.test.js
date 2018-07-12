@@ -28,7 +28,7 @@ describe('Modal', () => {
     expect(shallowToJson(modal)).toMatchSnapshot();
   });
 
-  it('contains Modal element', () => {
+  it('contains Modal node', () => {
     expect(modal.find('.Modal').exists()).toBe(true);
   });
 

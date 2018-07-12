@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Backdrop renders properly 1`] = `
+exports[`Backdrop when Backdrop is hidden renders properly 1`] = `""`;
+
+exports[`Backdrop when Backdrop is visible renders properly 1`] = `
 <div
   className="Backdrop"
   onClick={[Function]}
