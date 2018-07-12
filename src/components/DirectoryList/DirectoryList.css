@@ -1,3 +1,11 @@
 ul.DirectoryList {
+  margin: 5px 0;
+  padding-left: 0;
   list-style: none;
+  user-select: none;
+}
+
+ul.DirectoryList ul {
+  margin: 0;
+  padding-left: 20px;
 }

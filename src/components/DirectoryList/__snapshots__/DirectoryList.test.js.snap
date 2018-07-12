@@ -1,21 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DirectoryList when \`directories\` are not passed renders properly 1`] = `<ul />`;
+exports[`DirectoryList when \`directories\` are not passed renders properly 1`] = `
+<ul
+  className="DirectoryList"
+/>
+`;
 
 exports[`DirectoryList when component is fulfilled with \`directories\` renders properly 1`] = `
-<ul>
+<ul
+  className="DirectoryList"
+>
   <li
     key="1"
   >
     <Directory
       active={true}
       clicked={[Function]}
-      doubleClicked={[Function]}
       folderClicked={[Function]}
       name="Root"
       opened={true}
     />
     <DirectoryList
+      closeDirectory={[Function]}
       directories={
         Array [
           Object {
@@ -26,10 +32,9 @@ exports[`DirectoryList when component is fulfilled with \`directories\` renders 
           },
         ]
       }
-      editDirectory={[Function]}
+      openDirectory={[Function]}
       parentId={1}
       selectDirectory={[Function]}
-      toggleDirectory={[Function]}
     />
   </li>
 </ul>

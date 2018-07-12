@@ -1,5 +1,5 @@
 import React from 'react';
-import Explorer from './Explorer';
+import Explorer from '../Explorer';
 
 const App = () => (
   <div>

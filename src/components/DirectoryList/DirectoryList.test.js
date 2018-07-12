@@ -6,12 +6,14 @@ import DirectoryList from './DirectoryList';
 
 describe('DirectoryList', () => {
   const mockSelectDirectory = jest.fn();
-  const mockToggleDirectory = jest.fn();
+  const mockOpenDirectory = jest.fn();
+  const mockCloseDirectory = jest.fn();
   const mockEditDirectory = jest.fn();
 
   const mockedFunctions = {
     selectDirectory: mockSelectDirectory,
-    toggleDirectory: mockToggleDirectory,
+    openDirectory: mockOpenDirectory,
+    closeDirectory: mockCloseDirectory,
     editDirectory: mockEditDirectory,
   };
 

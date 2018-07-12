@@ -4,17 +4,17 @@ import Ancestry from '../../utils/ancestry';
 
 const initialState = {
   directories: [
-    // {
-    //   id: 1, name: 'Directory 1', opened: false, active: true,
-    // }, {
-    //   id: 2, name: 'Directory 2', opened: false, active: false,
-    // }, {
-    //   id: 3, name: 'Directory 1.1', opened: false, active: false, parentId: 1,
-    // }, {
-    //   id: 4, name: 'Directory 1.2', opened: false, active: false, parentId: 1,
-    // }, {
-    //   id: 5, name: 'Directory 1.1.1', opened: false, active: false, parentId: 3,
-    // },
+    {
+      id: 1, name: 'Directory 1', opened: false, active: true,
+    }, {
+      id: 2, name: 'Directory 2', opened: false, active: false,
+    }, {
+      id: 3, name: 'Directory 1.1', opened: false, active: false, parentId: 1,
+    }, {
+      id: 4, name: 'Directory 1.2', opened: false, active: false, parentId: 1,
+    }, {
+      id: 5, name: 'Directory 1.1.1', opened: false, active: false, parentId: 3,
+    },
   ],
 };
 

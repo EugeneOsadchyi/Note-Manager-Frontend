@@ -1,61 +1,71 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Directory from './Directory';
 import './DirectoryList.css';
 
-const DirectoryList = (props) => {
-  const {
-    directories,
-    parentId,
-    selectDirectory,
-    openDirectory,
-    closeDirectory,
-  } = props;
+class DirectoryList extends PureComponent {
+  renderDirectories() {
+    const {
+      directories,
+      parentId,
+      selectDirectory,
+      openDirectory,
+      closeDirectory,
+    } = this.props;
 
-  return (
-    <ul className="DirectoryList">
-      {
-        directories.map((directory) => {
-          const {
-            id, name, opened, active,
-          } = directory;
+    return (
+      directories.map((directory) => {
+        const {
+          id, name, opened, active,
+        } = directory;
 
-          if (directory.parentId === parentId) {
-            const folderClicked = directory.opened
-              ? closeDirectory
-              : openDirectory;
+        if (directory.parentId === parentId) {
+          const folderClicked = directory.opened
+            ? closeDirectory
+            : openDirectory;
 
-            return (
-              <li>
-                <Directory
-                  name={name}
-                  opened={opened}
-                  active={active}
-                  clicked={() => selectDirectory(id)}
-                  // doubleClicked={editDirectory}
-                  folderClicked={() => folderClicked(id)}
-                />
-                {
-                  directory.opened ? (
-                    <DirectoryList
-                      directories={directories}
-                      selectDirectory={selectDirectory}
-                      openDirectory={openDirectory}
-                      closeDirectory={closeDirectory}
-                      // editDirectory={editDirectory}
-                      parentId={directory.id}
-                    />
-                  ) : null
-                }
-              </li>
-            );
-          }
-          return null;
-        })
-      }
-    </ul>
-  );
-};
+          return (
+            <li key={id}>
+              <Directory
+                name={name}
+                opened={opened}
+                active={active}
+                clicked={() => selectDirectory(id)}
+                folderClicked={() => folderClicked(id)}
+              />
+              {this.renderNestedDirectories(directory)}
+            </li>
+          );
+        }
+        return null;
+      })
+    );
+  }
+
+  renderNestedDirectories(directory) {
+    const {
+      directories, selectDirectory, openDirectory, closeDirectory,
+    } = this.props;
+
+    return directory.opened ? (
+      <DirectoryList
+        directories={directories}
+        selectDirectory={selectDirectory}
+        openDirectory={openDirectory}
+        closeDirectory={closeDirectory}
+        parentId={directory.id}
+      />
+    ) : null;
+  }
+
+  render() {
+    return (
+      <ul className="DirectoryList">
+        {this.renderDirectories()}
+      </ul>
+    );
+  }
+}
 
 DirectoryList.propTypes = {
   directories: PropTypes.arrayOf(
@@ -70,8 +80,6 @@ DirectoryList.propTypes = {
   selectDirectory: PropTypes.func.isRequired,
   openDirectory: PropTypes.func.isRequired,
   closeDirectory: PropTypes.func.isRequired,
-  // toggleDirectory: PropTypes.func.isRequired,
-  // editDirectory: PropTypes.func.isRequired,
 };
 
 DirectoryList.defaultProps = {

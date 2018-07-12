@@ -52,13 +52,13 @@ describe('Directory', () => {
     });
   });
 
-  describe('when directory name was double-clicked', () => {
-    beforeEach(() => directory.find('.name').simulate('doubleclick'));
+  // describe('when directory name was double-clicked', () => {
+  //   beforeEach(() => directory.find('.name').simulate('doubleclick'));
 
-    it('dispatches the `doubleClicked()` it receives from the props', () => {
-      expect(mockDoubleClicked).toHaveBeenCalled();
-    });
-  });
+  //   it('dispatches the `doubleClicked()` it receives from the props', () => {
+  //     expect(mockDoubleClicked).toHaveBeenCalled();
+  //   });
+  // });
 
   describe('when directory icon was clicked', () => {
     beforeEach(() => directory.find('.icon').simulate('click'));

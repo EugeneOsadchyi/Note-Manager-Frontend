@@ -10,7 +10,7 @@ const Directory = ({
   opened,
   active,
   clicked,
-  doubleClicked,
+  // doubleClicked,
   folderClicked,
 }) => {
   const icon = opened ? faFolderOpen : faFolder;
@@ -22,7 +22,7 @@ const Directory = ({
     <div
       className={classes}
       onClick={clicked}
-      onDoubleClick={doubleClicked}
+      // onDoubleClick={doubleClicked}
       role="presentation"
     >
       <span className="icon" role="presentation" onClick={folderClicked}>
@@ -40,7 +40,7 @@ Directory.propTypes = {
   opened: PropTypes.bool.isRequired,
   active: PropTypes.bool.isRequired,
   clicked: PropTypes.func.isRequired,
-  doubleClicked: PropTypes.func.isRequired,
+  // doubleClicked: PropTypes.func.isRequired,
   folderClicked: PropTypes.func.isRequired,
 };
 

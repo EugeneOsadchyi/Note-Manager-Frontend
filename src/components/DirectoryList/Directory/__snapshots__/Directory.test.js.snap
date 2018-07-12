@@ -4,11 +4,12 @@ exports[`Directory renders properly 1`] = `
 <div
   className="Directory"
   onClick={[Function]}
-  onDoubleClick={[Function]}
+  role="presentation"
 >
   <span
     className="icon"
     onClick={[Function]}
+    role="presentation"
   >
     <FontAwesomeIcon
       border={false}
@@ -52,11 +53,12 @@ exports[`Directory when \`active\` is received from the props renders properly 1
 <div
   className="Directory active"
   onClick={[Function]}
-  onDoubleClick={[Function]}
+  role="presentation"
 >
   <span
     className="icon"
     onClick={[Function]}
+    role="presentation"
   >
     <FontAwesomeIcon
       border={false}

@@ -1,3 +1,12 @@
+.Directory {
+  cursor: pointer;
+  padding: 0 10px;
+}
+
 .Directory.active {
   background-color: blue;
+}
+
+.Directory .icon {
+  padding-right: 3px;
 }
