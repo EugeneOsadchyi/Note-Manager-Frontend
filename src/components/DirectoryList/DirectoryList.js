@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Directory from './Directory';
+
 import './DirectoryList.css';
+
+import Directory from './Directory';
 
 class DirectoryList extends PureComponent {
   renderDirectories() {

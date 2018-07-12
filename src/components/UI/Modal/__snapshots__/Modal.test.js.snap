@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders properly 1`] = `
+<Component>
+  <Backdrop
+    clicked={[Function]}
+    show={true}
+  />
+  <div
+    className="Modal"
+  >
+    <h1>
+      Modal content
+    </h1>
+  </div>
+</Component>
+`;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+
 import './Directory.css';
 
 const Directory = ({
