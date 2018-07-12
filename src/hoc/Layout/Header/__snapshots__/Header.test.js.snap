@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders properly 1`] = `
+<header
+  className="Header"
+>
+  Notes Manager
+</header>
+`;

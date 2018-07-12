@@ -1,6 +1,6 @@
 .Directory {
   cursor: pointer;
-  padding: 0 10px;
+  padding: 0 7px;
 }
 
 .Directory.active {
@@ -9,4 +9,5 @@
 
 .Directory .icon {
   padding-right: 3px;
+  vertical-align: middle;
 }

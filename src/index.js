@@ -3,6 +3,9 @@ import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider, compose } from 'react-redux';
 
+import 'normalize.css';
+import './index.css';
+
 import rootReducer from './store/reducers';
 import App from './containers/App';
 

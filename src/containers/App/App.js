@@ -1,12 +1,14 @@
 import React from 'react';
+import './App.css';
+
+import Layout from '../../hoc/Layout';
 import Explorer from '../Explorer';
 
 const App = () => (
-  <div>
-    <h1>
-      Note Manager
-    </h1>
-    <Explorer />
+  <div className="App">
+    <Layout>
+      <Explorer />
+    </Layout>
   </div>
 );
 

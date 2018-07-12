@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout renders properly 1`] = `
+<Component>
+  <Header
+    title="Manager"
+  />
+  <main
+    className="Content"
+  >
+    <h1>
+      Some child component
+    </h1>
+  </main>
+  <Footer />
+</Component>
+`;
