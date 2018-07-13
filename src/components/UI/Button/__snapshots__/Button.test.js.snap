@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders properly 1`] = `
+<button
+  className="Button Success"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  My Button
+</button>
+`;
+
+exports[`Button when button is disabled renders properly 1`] = `
+<Button
+  btnType="Success"
+  clicked={[Function]}
+  disabled={true}
+>
+  <button
+    className="Button Success"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  >
+    My Button
+  </button>
+</Button>
+`;

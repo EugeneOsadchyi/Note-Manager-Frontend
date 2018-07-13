@@ -1,0 +1,17 @@
+.Button {
+  background-color: transparent;
+  border: 2px solid black;
+  padding: 7px 12px;
+  min-width: 75px;
+  margin-right: 5px;
+}
+
+.Button:disabled {
+  cursor: not-allowed;
+  border-color: gray;
+  color: gray;
+}
+
+.Success {
+  font-weight: bold;
+}

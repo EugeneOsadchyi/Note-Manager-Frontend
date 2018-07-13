@@ -6,4 +6,6 @@
   border-color: black;
   padding: 50px 10px;
   height: 100%;
+
+  display: flex;
 }

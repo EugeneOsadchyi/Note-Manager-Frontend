@@ -6,6 +6,30 @@ exports[`App renders properly 1`] = `
 >
   <Layout>
     <Connect(Component) />
+    <Modal
+      show={true}
+    >
+      <h2>
+        New Directory
+      </h2>
+      <Input
+        placeholder="Name"
+      />
+      <Button
+        btnType={null}
+        clicked={[Function]}
+        disabled={false}
+      >
+        Cancel
+      </Button>
+      <Button
+        btnType="Success"
+        clicked={[Function]}
+        disabled={false}
+      >
+        Save
+      </Button>
+    </Modal>
   </Layout>
 </div>
 `;
