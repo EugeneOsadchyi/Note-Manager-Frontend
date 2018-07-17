@@ -5,15 +5,15 @@ import Ancestry from '../../utils/ancestry';
 const initialState = {
   directories: [
     // {
-    //   id: 1, name: 'Directory 1', opened: false, active: true,
+    //   id: 1, name: 'Directory 1', opened: false, active: true, editing: false
     // }, {
-    //   id: 2, name: 'Directory 2', opened: false, active: false,
+    //   id: 2, name: 'Directory 2', opened: false, active: false, editing: false,
     // }, {
-    //   id: 3, name: 'Directory 1.1', opened: false, active: false, parentId: 1,
+    //   id: 3, name: 'Directory 1.1', opened: false, active: false, editing: false, parentId: 1,
     // }, {
-    //   id: 4, name: 'Directory 1.2', opened: false, active: false, parentId: 1,
+    //   id: 4, name: 'Directory 1.2', opened: false, active: false, editing: false, parentId: 1,
     // }, {
-    //   id: 5, name: 'Directory 1.1.1', opened: false, active: false, parentId: 3,
+    //   id: 5, name: 'Directory 1.1.1', opened: false, active: false, editing: false, parentId: 3,
     // },
   ],
 };
@@ -40,9 +40,6 @@ const closeDirectory = (state, action) => {
 const selectDirectory = (state, action) => {
   let directories = state.directories.map(directory => updateObject(directory, { active: false }));
   directories = updateDirectories(directories, [action.id], { active: true });
-
-  const openedDirectoryIds = (new Ancestry(directories)).getAncestorIds(action.id);
-  directories = updateDirectories(directories, openedDirectoryIds, { opened: true });
 
   return updateObject(state, { directories });
 };

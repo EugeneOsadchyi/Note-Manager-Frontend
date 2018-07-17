@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DirectoryForm renders properly 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <Input
+    changed={[Function]}
+    elementConfig={
+      Object {
+        "placeholder": "Directory Name",
+        "type": "text",
+      }
+    }
+    elementType="input"
+    invalid={true}
+    key="name"
+    shouldValidate={
+      Object {
+        "required": true,
+      }
+    }
+    touched={false}
+    value=""
+  />
+  <Button
+    btnType="btn-cancel"
+    clicked={[Function]}
+    disabled={false}
+  >
+    Cancel
+  </Button>
+  <Button
+    btnType="Success btn-save"
+    clicked={[Function]}
+    disabled={true}
+  >
+    Save
+  </Button>
+</form>
+`;

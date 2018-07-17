@@ -1,9 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Input renders properly 1`] = `
-<input
+<div
   className="Input"
-  placeholder=""
-  type="text"
-/>
+>
+  <input
+    className="InputElement"
+    onChange={[Function]}
+    placeholder="My Input"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Input when elementConfig.type is \`number\` renders properly 1`] = `
+<div
+  className="Input"
+>
+  <input
+    className="InputElement"
+    onChange={[Function]}
+    placeholder="My Input"
+    type="number"
+    value=""
+  />
+</div>
+`;
+
+exports[`Input when input has an error renders properly 1`] = `
+<div
+  className="Input"
+>
+  <input
+    className="InputElement Invalid"
+    onChange={[Function]}
+    placeholder="My Input"
+    type="text"
+    value=""
+  />
+</div>
 `;
